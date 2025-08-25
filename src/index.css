@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cinematic dark theme (default) */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Cinematic colors */
+    --primary: 280 100% 70%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 26%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 26%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 191 95% 67%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 26%;
+    --input: 240 5% 26%;
+    --ring: 280 100% 70%;
+
+    --radius: 0.75rem;
+
+    /* Cinematic brand colors */
+    --neon-purple: 280 100% 70%;
+    --neon-cyan: 191 95% 67%;
+    --neon-green: 127 100% 63%;
+    --neon-yellow: 54 91% 68%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(280 100% 70% / 0.3), hsl(191 95% 67% / 0.3));
+    --gradient-accent: linear-gradient(90deg, hsl(280 100% 70%), hsl(191 95% 67%));
+    --gradient-card: linear-gradient(145deg, hsl(240 10% 6%), hsl(240 5% 15%));
+
+    /* Shadows & Effects */
+    --shadow-neon: 0 0 20px hsl(280 100% 70% / 0.5);
+    --shadow-cyan: 0 0 20px hsl(191 95% 67% / 0.5);
+    --shadow-elevation: 0 25px 50px -12px hsl(240 10% 3.9% / 0.8);
+    
+    /* Animation timings */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .light {
+    /* Light theme overrides */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 280 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 280 100% 50%;
+
+    /* Light mode gradients and shadows */
+    --gradient-hero: linear-gradient(135deg, hsl(280 100% 50% / 0.1), hsl(191 95% 67% / 0.1));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 98%), hsl(240 4.8% 95.9%));
+    --shadow-neon: 0 0 20px hsl(280 100% 50% / 0.2);
+    --shadow-cyan: 0 0 20px hsl(191 95% 67% / 0.2);
+    --shadow-elevation: 0 25px 50px -12px hsl(240 10% 3.9% / 0.1);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 280 100% 70%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 5% 26%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 26%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 191 95% 67%;
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5% 26%;
+    --input: 240 5% 26%;
+    --ring: 280 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Cinematic animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { 
+      text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+    }
+    50% { 
+      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+  }
+
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slide-in-right 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  .text-neon-purple {
+    color: hsl(var(--neon-purple));
+  }
+
+  .text-neon-cyan {
+    color: hsl(var(--neon-cyan));
+  }
+
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+  }
+
+  .text-neon-yellow {
+    color: hsl(var(--neon-yellow));
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .shadow-cyan {
+    box-shadow: var(--shadow-cyan);
+  }
+
+  .shadow-elevation {
+    box-shadow: var(--shadow-elevation);
+  }
+
+  /* Geometric shapes */
+  .geometric-shape {
+    position: absolute;
+    background: linear-gradient(45deg, hsl(var(--neon-purple)), hsl(var(--neon-cyan)));
+    border-radius: 8px;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .geometric-shape:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 10s;
+  }
+
+  .geometric-shape:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 12s;
+  }
+
+  .geometric-shape:nth-child(4) {
+    animation-delay: -6s;
+    animation-duration: 14s;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
